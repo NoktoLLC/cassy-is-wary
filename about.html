@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Cassy MacDonald — the artist behind Cassy is Wary. Handmade woodcraft from New Hampshire.">
+  <title>About Cassy — Cassy is Wary</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪵</text></svg>">
+  <style>
+    .about-hero {
+      padding: calc(var(--sp-10) + 80px) 0 var(--sp-10);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 30%, rgba(14,31,61,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(44,28,14,0.3) 0%, transparent 50%);
+    }
+    .about-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-9);
+      align-items: center;
+      position: relative;
+    }
+    .about-portrait {
+      position: relative;
+    }
+    .about-portrait img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+    }
+    .portrait-frame {
+      position: absolute;
+      inset: -8px;
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius-lg) + 8px);
+      pointer-events: none;
+    }
+    .portrait-placeholder {
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--bark-mid), var(--blue-void));
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-3);
+      border: 1px solid var(--border);
+      color: var(--ash);
+      font-family: var(--font-hand);
+    }
+    .process-section {
+      padding: var(--sp-10) 0;
+      background: var(--bark-deep);
+      border-top: 1px solid var(--border);
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--sp-5);
+      margin-top: var(--sp-8);
+    }
+    .process-step {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      position: relative;
+    }
+    .step-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--gold);
+      opacity: 0.2;
+      line-height: 1;
+      margin-bottom: var(--sp-3);
+    }
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--parchment);
+      margin-bottom: var(--sp-2);
+    }
+    .step-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .materials-section {
+      padding: var(--sp-10) 0;
+    }
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--sp-4);
+      margin-top: var(--sp-7);
+    }
+    .material-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      text-align: center;
+      transition: border-color var(--dur-fast), transform var(--dur-mid) var(--ease-out);
+    }
+    .material-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+    }
+    .material-icon {
+      font-size: 2rem;
+      margin-bottom: var(--sp-3);
+      display: block;
+    }
+    .material-name {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--parchment);
+      margin-bottom: var(--sp-1);
+    }
+    .material-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    @media (max-width: 768px) {
+      .about-hero-grid { grid-template-columns: 1fr; }
+      .about-portrait { max-width: 360px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav" role="banner">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Cassy is Wary — Home">
+        <span class="nav-logo-main">Cassy is Wary</span>
+        <span class="nav-logo-sub">Handmade · New England</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#gallery">Gallery</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html" aria-current="page" style="color:var(--gold)">About Cassy</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="nav-cart-btn" aria-label="View cart" id="open-cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        Cart
+      </button>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="about-hero" aria-label="About Cassy MacDonald">
+      <div class="container">
+        <div class="about-hero-grid">
+          <div class="about-portrait animate-in">
+            <img src="images/about-workshop.webp"
+                 alt="Cassy MacDonald at her workbench carving wood by lamplight"
+                 loading="eager"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="portrait-placeholder" style="display:none">
+              <span style="font-size:3rem">🪵</span>
+              <span>Cassy's Workshop</span>
+            </div>
+            <div class="portrait-frame" aria-hidden="true"></div>
+          </div>
+
+          <div class="animate-in">
+            <span class="section-eyebrow">The Artist Behind the Wood</span>
+            <h1 class="section-title" style="font-size:clamp(2.2rem,5vw,3.5rem)">
+              Cassy <span>MacDonald</span>
+            </h1>
+            <div style="height:var(--sp-5)"></div>
+            <p style="color:var(--text-secondary);font-size:1.05rem;margin-bottom:var(--sp-4)">
+              Somewhere in the wooded hills north of Concord, New Hampshire, there's a small workshop
+              that smells of cedar shavings, wood stain, and something harder to name. That's where
+              Cassy MacDonald works — and has worked, in one form or another, since she was old
+              enough to hold a chisel.
+            </p>
+            <p style="color:var(--text-secondary);font-size:1.05rem;margin-bottom:var(--sp-4)">
+              She didn't go to art school. She went to the forest. The craft came from watching,
+              doing, failing, and doing again — from a grandmother who carved spoons and a father
+              who built furniture in the garage on winter weekends.
+            </p>
+            <p style="color:var(--text-secondary);font-size:1.05rem;margin-bottom:var(--sp-6)">
+              Her work is rooted in New England — the particular texture of its winters,
+              its stone walls and pine forests, its old stubbornness — but it reaches for
+              something stranger. Something a little wary.
+            </p>
+            <div style="display:flex;gap:var(--sp-4);flex-wrap:wrap">
+              <a href="shop.html" class="btn btn-primary">Shop Her Work</a>
+              <a href="index.html#contact" class="btn btn-secondary">Commission a Piece</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bark-divider container"></div>
+
+    <!-- Process -->
+    <section class="process-section" id="process" aria-label="Cassy's process">
+      <div class="container">
+        <div class="section-header animate-in">
+          <span class="section-eyebrow">From Tree to Table</span>
+          <h2 class="section-title">The <span>Process</span></h2>
+          <p class="section-desc">
+            No two pieces start or end the same way. But there's a rhythm to how Cassy works.
+          </p>
+        </div>
+        <div class="process-steps">
+          <div class="process-step animate-in">
+            <div class="step-number" aria-hidden="true">01</div>
+            <h3 class="step-title">Finding the Wood</h3>
+            <p class="step-desc">Most pieces start with salvaged, fallen, or locally sourced New England hardwoods — birch, maple, cherry, cedar. The tree tells her what it wants to be.</p>
+          </div>
+          <div class="process-step animate-in">
+            <div class="step-number" aria-hidden="true">02</div>
+            <h3 class="step-title">Sketching the Form</h3>
+            <p class="step-desc">Cassy sketches loosely — more mood than blueprint. She lets the grain of the wood shift the design. Plans change when the material speaks.</p>
+          </div>
+          <div class="process-step animate-in">
+            <div class="step-number" aria-hidden="true">03</div>
+            <h3 class="step-title">Carving & Shaping</h3>
+            <p class="step-desc">Hand tools when possible. Router, lathe, and band saw when needed. The work is slow. Cassy doesn't rush.</p>
+          </div>
+          <div class="process-step animate-in">
+            <div class="step-number" aria-hidden="true">04</div>
+            <h3 class="step-title">Burning & Painting</h3>
+            <p class="step-desc">Pyrography adds depth and detail — burned lines that can't be undone. Select pieces receive hand-painted accents, particularly the Cassowary blues.</p>
+          </div>
+          <div class="process-step animate-in">
+            <div class="step-number" aria-hidden="true">05</div>
+            <h3 class="step-title">Finishing</h3>
+            <p class="step-desc">Oil, wax, or matte lacquer — chosen to let the wood breathe and age. Each finish is applied by hand, multiple coats, light sanding between each.</p>
+          </div>
+          <div class="process-step animate-in">
+            <div class="step-number" aria-hidden="true">06</div>
+            <h3 class="step-title">Sent Into the World</h3>
+            <p class="step-desc">Every piece ships wrapped in kraft paper, with a hand-written note from Cassy about that specific piece — its wood, its quirks, its name.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Materials -->
+    <section class="materials-section" aria-label="Materials Cassy works with">
+      <div class="container">
+        <div class="section-header animate-in">
+          <span class="section-eyebrow">What She Works With</span>
+          <h2 class="section-title">The <span>Materials</span></h2>
+        </div>
+        <div class="materials-grid">
+          <div class="material-card animate-in">
+            <span class="material-icon" aria-hidden="true">🌿</span>
+            <div class="material-name">White Birch</div>
+            <p class="material-desc">New Hampshire's signature tree. Pale, clean grain. Great for signs and relief panels.</p>
+          </div>
+          <div class="material-card animate-in">
+            <span class="material-icon" aria-hidden="true">🍁</span>
+            <div class="material-name">Sugar Maple</div>
+            <p class="material-desc">Hard, fine-grained Vermont maple. Takes pyrography beautifully. Warm honey tone.</p>
+          </div>
+          <div class="material-card animate-in">
+            <span class="material-icon" aria-hidden="true">🌲</span>
+            <div class="material-name">Eastern Cedar</div>
+            <p class="material-desc">Aromatic and richly colored. Perfect for totems, boxes, and objects meant to last.</p>
+          </div>
+          <div class="material-card animate-in">
+            <span class="material-icon" aria-hidden="true">🍒</span>
+            <div class="material-name">Wild Cherry</div>
+            <p class="material-desc">Darkens with age to a deep reddish-brown. Cassy's favorite for keepsake boxes.</p>
+          </div>
+          <div class="material-card animate-in">
+            <span class="material-icon" aria-hidden="true">🪨</span>
+            <div class="material-name">Driftwood</div>
+            <p class="material-desc">Gathered from Maine's coast. Weathered, sculptural. Each piece is already half-art.</p>
+          </div>
+          <div class="material-card animate-in">
+            <span class="material-icon" aria-hidden="true">✨</span>
+            <div class="material-name">Resin & Pigment</div>
+            <p class="material-desc">For inlays and accents — glow pigments, midnight blues, forest greens.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding:var(--sp-10) 0;text-align:center;background:var(--bark-deep);border-top:1px solid var(--border)">
+      <div class="container">
+        <div class="animate-in" style="max-width:560px;margin:0 auto">
+          <span class="section-eyebrow" style="display:block;text-align:center">Ready?</span>
+          <h2 class="section-title" style="text-align:center">Something's <span>Waiting for You</span></h2>
+          <p style="color:var(--text-secondary);margin:var(--sp-4) 0 var(--sp-6)">
+            Browse the current collection, or reach out about a custom piece.
+            Cassy takes commissions — just describe what you're imagining.
+          </p>
+          <div style="display:flex;gap:var(--sp-4);justify-content:center;flex-wrap:wrap">
+            <a href="shop.html" class="btn btn-primary">Browse the Shop</a>
+            <a href="index.html#contact" class="btn btn-secondary">Request a Custom Piece</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom" style="padding-top:0;border-top:none">
+        <span>© 2025 Cassy is Wary · NoktoLLC</span>
+        <a href="index.html" style="font-family:var(--font-hand);color:var(--blue-wattle)">← Back to Home</a>
+        <span class="footer-hand-note">Made in the woods of New Hampshire ✦</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

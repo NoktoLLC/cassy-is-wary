@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop handmade woodcraft by Cassy MacDonald — New England state signs, carvings, spooky trinkets, and custom furniture.">
+  <title>Shop — Cassy is Wary</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪵</text></svg>">
+  <!-- CartSnip embed — paste script tag here when integrating -->
+  <!-- <script src="https://cdn.cartsnip.com/v1/cartsnip.js" data-shop-id="YOUR_ID" async></script> -->
+  <style>
+    .shop-hero {
+      padding: calc(var(--sp-9) + 80px) 0 var(--sp-9);
+      background: linear-gradient(180deg, var(--bark-abyss) 0%, var(--bark-deep) 100%);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .shop-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 80% 50%, rgba(14,31,61,0.3) 0%, transparent 55%),
+        radial-gradient(ellipse at 15% 30%, rgba(44,28,14,0.2) 0%, transparent 50%);
+    }
+    .shop-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--sp-8);
+      padding: var(--sp-9) 0;
+      align-items: start;
+    }
+    .shop-sidebar {
+      position: sticky;
+      top: 90px;
+    }
+    .sidebar-section {
+      margin-bottom: var(--sp-7);
+    }
+    .sidebar-title {
+      font-family: var(--font-hand);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: var(--sp-4);
+    }
+    .sidebar-filters {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+    .sidebar-filter {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      padding: var(--sp-2) var(--sp-3);
+      border-radius: var(--radius-md);
+      font-family: var(--font-hand);
+      font-size: 1rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--dur-fast);
+      min-height: 44px;
+      background: transparent;
+      border: none;
+      text-align: left;
+      width: 100%;
+    }
+    .sidebar-filter:hover,
+    .sidebar-filter.active {
+      background: rgba(201,168,76,0.08);
+      color: var(--parchment);
+      border-left: 2px solid var(--gold);
+      padding-left: calc(var(--sp-3) - 2px);
+    }
+    .sidebar-filter-count {
+      margin-left: auto;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--bg-raised);
+      padding: 1px 7px;
+      border-radius: 999px;
+    }
+    .price-range {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+    .price-inputs {
+      display: flex;
+      gap: var(--sp-2);
+      align-items: center;
+    }
+    .price-input {
+      width: 80px;
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      min-height: 44px;
+    }
+    .price-input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .shop-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--sp-6);
+      gap: var(--sp-4);
+      flex-wrap: wrap;
+    }
+    .result-count {
+      font-family: var(--font-hand);
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+    .sort-select {
+      padding: var(--sp-2) var(--sp-4);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-bark);
+      color: var(--text-primary);
+      font-family: var(--font-hand);
+      font-size: 0.95rem;
+      min-height: 44px;
+      cursor: pointer;
+    }
+    .sort-select:focus { outline: none; border-color: var(--gold); }
+
+    /* CartSnip integration zone */
+    .cartsnip-zone {
+      border: 2px dashed rgba(201,168,76,0.3);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-7);
+      text-align: center;
+      margin: var(--sp-8) 0;
+      background: rgba(201,168,76,0.04);
+    }
+    .cartsnip-zone h3 {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: var(--sp-3);
+    }
+    .cartsnip-zone p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-family: var(--font-hand);
+    }
+    .cartsnip-zone code {
+      display: block;
+      margin-top: var(--sp-4);
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      font-size: 0.8rem;
+      color: var(--blue-wattle);
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+
+    /* Custom order banner */
+    .custom-banner {
+      background: linear-gradient(135deg, var(--bark-mid) 0%, var(--blue-void) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-7) var(--sp-8);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--sp-6);
+      align-items: center;
+      margin: var(--sp-8) 0;
+    }
+    .custom-banner-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-style: italic;
+      color: var(--parchment);
+      margin-bottom: var(--sp-2);
+    }
+    .custom-banner-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .shop-layout { grid-template-columns: 1fr; }
+      .shop-sidebar { position: static; }
+      .sidebar-filters { flex-direction: row; flex-wrap: wrap; }
+      .sidebar-filter { width: auto; }
+    }
+    @media (max-width: 600px) {
+      .custom-banner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav" role="banner">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Cassy is Wary — Home">
+        <span class="nav-logo-main">Cassy is Wary</span>
+        <span class="nav-logo-sub">Handmade · New England</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#gallery">Gallery</a>
+        <a href="shop.html" aria-current="page" style="color:var(--gold)">Shop</a>
+        <a href="about.html">About Cassy</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="nav-cart-btn" aria-label="View cart" id="open-cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        Cart
+        <span class="cart-count" aria-live="polite" style="display:none;background:var(--gold);color:var(--bark-abyss);border-radius:999px;min-width:20px;height:20px;font-size:.75rem;font-weight:700;align-items:center;justify-content:center;padding:0 5px">0</span>
+      </button>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Shop Hero -->
+    <section class="shop-hero" aria-label="Shop all pieces">
+      <div class="container" style="position:relative">
+        <span class="section-eyebrow">✦ Cassy MacDonald · New Hampshire</span>
+        <h1 class="section-title" style="font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:var(--sp-3)">
+          The <span>Shop</span>
+        </h1>
+        <p style="color:var(--text-secondary);max-width:520px;font-size:1.05rem">
+          Handmade woodcraft, carved signs, spooky trinkets, and custom furniture.
+          Each piece is one of a kind unless noted otherwise.
+        </p>
+      </div>
+    </section>
+
+    <!-- Shop Body -->
+    <div class="container">
+      <div class="shop-layout">
+
+        <!-- Sidebar -->
+        <aside class="shop-sidebar" aria-label="Shop filters">
+          <div class="sidebar-section">
+            <div class="sidebar-title">Category</div>
+            <div class="sidebar-filters" role="group" aria-label="Filter by category">
+              <button class="sidebar-filter active" data-filter="all">
+                All Pieces
+                <span class="sidebar-filter-count">12</span>
+              </button>
+              <button class="sidebar-filter" data-filter="state-signs">
+                State Signs
+                <span class="sidebar-filter-count">4</span>
+              </button>
+              <button class="sidebar-filter" data-filter="carvings">
+                Carvings
+                <span class="sidebar-filter-count">3</span>
+              </button>
+              <button class="sidebar-filter" data-filter="spooky">
+                Spooky
+                <span class="sidebar-filter-count">2</span>
+              </button>
+              <button class="sidebar-filter" data-filter="furniture">
+                Furniture
+                <span class="sidebar-filter-count">1</span>
+              </button>
+              <button class="sidebar-filter" data-filter="trinkets">
+                Trinkets
+                <span class="sidebar-filter-count">2</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <div class="sidebar-title">Price Range</div>
+            <div class="price-range">
+              <div class="price-inputs">
+                <label for="price-min" class="visually-hidden">Minimum price</label>
+                <input id="price-min" class="price-input" type="number" placeholder="$0" min="0">
+                <span style="color:var(--text-muted)">–</span>
+                <label for="price-max" class="visually-hidden">Maximum price</label>
+                <input id="price-max" class="price-input" type="number" placeholder="$500" min="0">
+              </div>
+              <button class="btn btn-ghost" style="width:100%">Apply</button>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <div class="sidebar-title">Wood Type</div>
+            <div class="sidebar-filters" role="group" aria-label="Filter by wood type">
+              <button class="sidebar-filter">White Birch</button>
+              <button class="sidebar-filter">Sugar Maple</button>
+              <button class="sidebar-filter">Eastern Cedar</button>
+              <button class="sidebar-filter">Wild Cherry</button>
+              <button class="sidebar-filter">Driftwood</button>
+            </div>
+          </div>
+
+          <!-- CartSnip integration -->
+          <div class="cartsnip-zone" id="cartsnip-sidebar-widget">
+            <h3>Cart</h3>
+            <p>CartSnip cart widget loads here.</p>
+            <code>
+              &lt;!-- CartSnip Integration --&gt;<br>
+              &lt;script src="https://cdn.cartsnip.com/v1/cartsnip.js"<br>
+              &nbsp;&nbsp;data-shop-id="YOUR_SHOP_ID"&gt;<br>
+              &lt;/script&gt;
+            </code>
+          </div>
+        </aside>
+
+        <!-- Main content -->
+        <div>
+          <!-- Toolbar -->
+          <div class="shop-toolbar">
+            <span class="result-count" aria-live="polite">Showing <strong style="color:var(--parchment)">12</strong> pieces</span>
+            <div style="display:flex;gap:var(--sp-3);align-items:center">
+              <label for="sort-select" class="visually-hidden">Sort by</label>
+              <select id="sort-select" class="sort-select" aria-label="Sort products">
+                <option>Featured</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Newest</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Products grid -->
+          <div class="products-grid" role="list" id="shop-grid">
+
+            <article class="product-card animate-in" data-category="state-signs" role="listitem">
+              <div class="product-card-img">
+                <img src="images/product-nh-sign.webp" alt="Handcarved New Hampshire state birch sign" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="product-img-placeholder" style="display:none"><div><div style="font-size:2rem;margin-bottom:8px">🪵</div>NH Sign</div></div>
+                <span class="product-badge">State Sign</span>
+              </div>
+              <div class="product-card-body">
+                <span class="product-state">New Hampshire</span>
+                <h3 class="product-name">Granite State Carving</h3>
+                <p class="product-desc">Hand-routed birch plank with pine cone border. Dark walnut stain, matte sealant.</p>
+                <div class="product-footer">
+                  <span class="product-price">$68</span>
+                  <button class="add-to-cart-btn" data-product-id="nh-sign-001" aria-label="Add Granite State Carving to cart">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card animate-in" data-category="spooky" role="listitem">
+              <div class="product-card-img">
+                <img src="images/product-cassowary-totem.webp" alt="Dark carved Cassowary totem with cobalt blue detail" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="product-img-placeholder" style="display:none"><div><div style="font-size:2rem;margin-bottom:8px">🐦‍⬛</div>Cassowary Totem</div></div>
+                <span class="product-badge" style="background:var(--blue-void);border-color:var(--blue-mid)">Signature</span>
+              </div>
+              <div class="product-card-body">
+                <span class="product-state">The Wary Collection</span>
+                <h3 class="product-name">Cassowary Spirit Totem</h3>
+                <p class="product-desc">Hand-carved cedar totem. Cobalt blue painted wattle. Ancient, fearless, unknowable.</p>
+                <div class="product-footer">
+                  <span class="product-price">$145</span>
+                  <button class="add-to-cart-btn" data-product-id="cassowary-totem-001" aria-label="Add Cassowary Spirit Totem to cart">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card animate-in" data-category="state-signs" role="listitem">
+              <div class="product-card-img">
+                <img src="images/product-vt-sign.webp" alt="Vermont maple sign with moose silhouette" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="product-img-placeholder" style="display:none"><div><div style="font-size:2rem;margin-bottom:8px">🍁</div>VT Sign</div></div>
+                <span class="product-badge">State Sign</span>
+              </div>
+              <div class="product-card-body">
+                <span class="product-state">Vermont</span>
+                <h3 class="product-name">Green Mountain Maple Sign</h3>
+                <p class="product-desc">Vermont maple etched with moose silhouette. Unique grain on every piece.</p>
+                <div class="product-footer">
+                  <span class="product-price">$72</span>
+                  <button class="add-to-cart-btn" data-product-id="vt-sign-001" aria-label="Add Green Mountain Maple Sign to cart">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card animate-in" data-category="trinkets" role="listitem">
+              <div class="product-card-img">
+                <img src="images/product-mushroom-set.webp" alt="Set of three glow-in-dark wooden mushroom figurines" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="product-img-placeholder" style="display:none"><div><div style="font-size:2rem;margin-bottom:8px">🍄</div>Mushroom Set</div></div>
+                <span class="product-badge" style="background:var(--moss-deep);border-color:var(--moss)">New</span>
+              </div>
+              <div class="product-card-body">
+                <span class="product-state">Forest Trinkets</span>
+                <h3 class="product-name">Bioluminescent Mushroom Set</h3>
+                <p class="product-desc">Turned wooden mushrooms with glow-in-dark blue pigment finish. Set of 3.</p>
+                <div class="product-footer">
+                  <span class="product-price">$48</span>
+                  <button class="add-to-cart-btn" data-product-id="mushroom-set-001" aria-label="Add Bioluminescent Mushroom Set to cart">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card animate-in" data-category="carvings" role="listitem">
+              <div class="product-card-img">
+                <img src="images/product-bark-relief.webp" alt="Birch bark-on relief panel with moonlit forest carving" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="product-img-placeholder" style="display:none"><div><div style="font-size:2rem;margin-bottom:8px">🌙</div>Bark Relief</div></div>
+              </div>
+              <div class="product-card-body">
+                <span class="product-state">Relief Carvings</span>
+                <h3 class="product-name">Midnight Forest Relief Panel</h3>
+                <p class="product-desc">Natural bark-on birch slab. Moonlit forest with owl. One of a kind.</p>
+                <div class="product-footer">
+                  <span class="product-price">$210</span>
+                  <button class="add-to-cart-btn" data-product-id="bark-relief-001" aria-label="Add Midnight Forest Relief Panel to cart">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card animate-in" data-category="spooky" role="listitem">
+              <div class="product-card-img">
+                <img src="images/product-hex-box.webp" alt="Cherry wood hex keepsake box with pyrography symbols" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="product-img-placeholder" style="display:none"><div><div style="font-size:2rem;margin-bottom:8px">🔮</div>Hex Box</div></div>
+                <span class="product-badge" style="background:rgba(122,45,30,0.5);border-color:var(--rust-bright)">Limited</span>
+              </div>
+              <div class="product-card-body">
+                <span class="product-state">Spooky Collection</span>
+                <h3 class="product-name">Wary Keepsake Hex Box</h3>
+                <p class="product-desc">Pyrography hex symbols on cherry wood. Magnetic closure. Dark velvet lining.</p>
+                <div class="product-footer">
+                  <span class="product-price">$88</span>
+                  <button class="add-to-cart-btn" data-product-id="hex-box-001" aria-label="Add Wary Keepsake Hex Box to cart">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card animate-in" data-category="state-signs" role="listitem">
+              <div class="product-card-img">
+                <div class="product-img-placeholder" style="display:flex"><div><div style="font-size:2rem;margin-bottom:8px">🦞</div>ME Sign<br><small>Coming soon</small></div></div>
+                <span class="product-badge">State Sign</span>
+              </div>
+              <div class="product-card-body">
+                <span class="product-state">Maine</span>
+                <h3 class="product-name">Pine Tree State Plank</h3>
+                <p class="product-desc">Driftwood-edge pine slab with lobster and lighthouse motif. Maine sea salt finish.</p>
+                <div class="product-footer">
+                  <span class="product-price">$76</span>
+                  <button class="add-to-cart-btn" data-product-id="me-sign-001" aria-label="Add Pine Tree State Plank to cart">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card animate-in" data-category="furniture" role="listitem">
+              <div class="product-card-img">
+                <div class="product-img-placeholder" style="display:flex"><div><div style="font-size:2rem;margin-bottom:8px">🪑</div>Live Edge Table<br><small>Coming soon</small></div></div>
+                <span class="product-badge" style="background:var(--rust);border-color:var(--rust-bright)">Commission</span>
+              </div>
+              <div class="product-card-body">
+                <span class="product-state">Custom Furniture</span>
+                <h3 class="product-name">Live Edge Black Walnut Table</h3>
+                <p class="product-desc">Custom live-edge black walnut side table. Hairpin legs. Commission only — contact for quote.</p>
+                <div class="product-footer">
+                  <span class="product-price">From $480</span>
+                  <a href="index.html#contact" class="add-to-cart-btn" style="text-decoration:none">
+                    Inquire →
+                  </a>
+                </div>
+              </div>
+            </article>
+
+          </div><!-- /products-grid -->
+
+          <!-- Custom Order Banner -->
+          <div class="custom-banner animate-in" id="custom">
+            <div>
+              <h2 class="custom-banner-title">Want Something Made Just for You?</h2>
+              <p class="custom-banner-desc">
+                Cassy takes custom orders. A specific state, a family name, a symbol that means something to you.
+                Describe what you're imagining — she'll tell you what's possible.
+              </p>
+            </div>
+            <a href="index.html#contact" class="btn btn-primary" style="white-space:nowrap">
+              Request a Custom Piece
+            </a>
+          </div>
+
+          <!-- CartSnip Full Cart Zone -->
+          <!--
+          ╔══════════════════════════════════════════════╗
+          ║         CARTSNIP INTEGRATION ZONE           ║
+          ║                                              ║
+          ║  1. Sign up at cartsnip.com                  ║
+          ║  2. Get your Shop ID                         ║
+          ║  3. Paste the embed script in <head>         ║
+          ║  4. Initialize in js/main.js:                ║
+          ║     CartSnip.init({ shopId: 'YOUR_ID' })     ║
+          ║  5. Remove the dashed placeholder below      ║
+          ╚══════════════════════════════════════════════╝
+          -->
+          <div class="cartsnip-zone" id="cartsnip-checkout-zone">
+            <h3>🛒 CartSnip Checkout</h3>
+            <p>
+              The full CartSnip cart and checkout experience will render here.<br>
+              Add your CartSnip Shop ID to activate.
+            </p>
+            <code>
+              // js/main.js — uncomment when CartSnip is configured:<br><br>
+              // CartSnip.init({<br>
+              //   shopId: 'YOUR_CARTSNIP_SHOP_ID',<br>
+              //   theme: 'dark',<br>
+              //   accentColor: '#C9A84C', // Cassy gold<br>
+              //   container: '#cartsnip-checkout-zone',<br>
+              // });
+            </code>
+          </div>
+
+        </div><!-- /main content -->
+      </div><!-- /shop-layout -->
+    </div><!-- /container -->
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom" style="padding-top:0;border-top:none">
+        <span>© 2025 Cassy is Wary · NoktoLLC</span>
+        <a href="index.html" style="font-family:var(--font-hand);color:var(--blue-wattle)">← Back to Home</a>
+        <span style="opacity:0.5;font-size:0.75rem">🔒 Secure checkout via CartSnip</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CartSnip floating cart container -->
+  <div id="cartsnip-floating-cart" role="complementary" aria-label="Shopping cart"></div>
+
+  <script src="js/main.js" defer></script>
+  <script>
+    // Shop-specific filter logic
+    const sidebarBtns = document.querySelectorAll('.sidebar-filter[data-filter]');
+    const shopCards = document.querySelectorAll('#shop-grid .product-card');
+    sidebarBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        sidebarBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        shopCards.forEach(card => {
+          card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

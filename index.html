@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cassy is Wary — Handmade woodcraft, carvings, and artisan goods from the New England woods. By Cassy MacDonald.">
+  <title>Cassy is Wary — Handmade Woodcraft by Cassy MacDonald</title>
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪵</text></svg>">
+
+  <!-- CartSnip — paste embed snippet here when ready -->
+  <!-- <script src="https://cdn.cartsnip.com/v1/cartsnip.js" data-shop-id="YOUR_ID" async></script> -->
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <header class="site-nav" role="banner">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Cassy is Wary — Home">
+        <span class="nav-logo-main">Cassy is Wary</span>
+        <span class="nav-logo-sub">Handmade · New England</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#gallery">Gallery</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About Cassy</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="nav-cart-btn" aria-label="View cart" id="open-cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        Cart
+        <span class="cart-count" aria-live="polite" style="
+          display:none;
+          background:var(--gold);
+          color:var(--bark-abyss);
+          border-radius:999px;
+          min-width:20px; height:20px;
+          font-size:0.75rem;
+          font-weight:700;
+          align-items:center;
+          justify-content:center;
+          padding:0 5px;
+        ">0</span>
+      </button>
+
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section class="hero" aria-label="Welcome to Cassy is Wary">
+      <div class="hero-bg" role="img" aria-label="Dark enchanted woodshop interior with glowing blue mushrooms and amber candlelight"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-eyebrow">✦ Handmade in New Hampshire ✦</span>
+          <h1 class="hero-title">
+            Cassy
+            <em>is Wary.</em>
+          </h1>
+          <p class="hero-tagline">
+            Woodcraft born from the deep New England forest — eccentric, handmade,
+            and just a little unsettling. Each piece holds the spirit of the woods
+            it came from.
+          </p>
+          <div class="hero-actions">
+            <a href="#gallery" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+              </svg>
+              Browse the Gallery
+            </a>
+            <a href="shop.html" class="btn btn-secondary">
+              Shop All Pieces
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span>scroll</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         MARQUEE BANNER
+    ═══════════════════════════════════════════ -->
+    <div class="featured-banner" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item">New Hampshire State Signs</span>
+        <span class="marquee-item">Vermont Maple Carvings</span>
+        <span class="marquee-item">Maine Coastal Driftwood Art</span>
+        <span class="marquee-item">Handcarved Wall Plaques</span>
+        <span class="marquee-item">Custom Furniture Pieces</span>
+        <span class="marquee-item">Forest Trinkets &amp; Totems</span>
+        <span class="marquee-item">Spooky Season Collection</span>
+        <span class="marquee-item">New England State Signs</span>
+        <!-- duplicated for seamless loop -->
+        <span class="marquee-item">New Hampshire State Signs</span>
+        <span class="marquee-item">Vermont Maple Carvings</span>
+        <span class="marquee-item">Maine Coastal Driftwood Art</span>
+        <span class="marquee-item">Handcarved Wall Plaques</span>
+        <span class="marquee-item">Custom Furniture Pieces</span>
+        <span class="marquee-item">Forest Trinkets &amp; Totems</span>
+        <span class="marquee-item">Spooky Season Collection</span>
+        <span class="marquee-item">New England State Signs</span>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         PRODUCT GALLERY
+    ═══════════════════════════════════════════ -->
+    <section class="products-section" id="gallery" aria-label="Product gallery">
+      <div class="container">
+        <div class="section-header animate-in">
+          <span class="section-eyebrow">✦ The Collection</span>
+          <h2 class="section-title">Pieces from the <span>Deep Woods</span></h2>
+          <p class="section-desc">
+            Every item is shaped by hand — sanded, carved, burned, and finished
+            by Cassy MacDonald in her New Hampshire studio.
+          </p>
+        </div>
+
+        <!-- Filters -->
+        <div class="product-filters" role="group" aria-label="Filter products">
+          <button class="filter-btn active" data-filter="all">All Pieces</button>
+          <button class="filter-btn" data-filter="state-signs">State Signs</button>
+          <button class="filter-btn" data-filter="carvings">Carvings</button>
+          <button class="filter-btn" data-filter="spooky">Spooky</button>
+          <button class="filter-btn" data-filter="furniture">Furniture</button>
+          <button class="filter-btn" data-filter="trinkets">Trinkets</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="products-grid" role="list">
+
+          <!-- Product 1 -->
+          <article class="product-card animate-in" data-category="state-signs" role="listitem">
+            <div class="product-card-img">
+              <img src="images/product-nh-sign.webp"
+                   alt="Handcarved New Hampshire state sign in birch wood with pine cone border"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="product-img-placeholder" style="display:none">
+                <div>
+                  <div style="font-size:2rem;margin-bottom:8px">🪵</div>
+                  NH State Sign<br><small>Image coming soon</small>
+                </div>
+              </div>
+              <span class="product-badge">State Sign</span>
+            </div>
+            <div class="product-card-body">
+              <span class="product-state">New Hampshire</span>
+              <h3 class="product-name">Granite State Carving</h3>
+              <p class="product-desc">Hand-routed birch plank with pine cone border motif. Finished with dark walnut stain and matte sealant.</p>
+              <div class="product-footer">
+                <span class="product-price">$68</span>
+                <button class="add-to-cart-btn" data-product-id="nh-sign-001" aria-label="Add Granite State Carving to cart">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                  </svg>
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 2 -->
+          <article class="product-card animate-in" data-category="spooky" role="listitem">
+            <div class="product-card-img">
+              <img src="images/product-cassowary-totem.webp"
+                   alt="Dark carved wooden Cassowary bird totem with blue painted details"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="product-img-placeholder" style="display:none">
+                <div>
+                  <div style="font-size:2rem;margin-bottom:8px">🐦‍⬛</div>
+                  Cassowary Totem<br><small>Image coming soon</small>
+                </div>
+              </div>
+              <span class="product-badge" style="background:var(--blue-void);border-color:var(--blue-mid)">Signature</span>
+            </div>
+            <div class="product-card-body">
+              <span class="product-state">The Wary Collection</span>
+              <h3 class="product-name">Cassowary Spirit Totem</h3>
+              <p class="product-desc">Hand-carved cedar totem depicting the great Cassowary — ancient, fearless, unknowable. Cobalt blue painted wattle detail.</p>
+              <div class="product-footer">
+                <span class="product-price">$145</span>
+                <button class="add-to-cart-btn" data-product-id="cassowary-totem-001" aria-label="Add Cassowary Spirit Totem to cart">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                  </svg>
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 3 -->
+          <article class="product-card animate-in" data-category="state-signs" role="listitem">
+            <div class="product-card-img">
+              <img src="images/product-vt-sign.webp"
+                   alt="Vermont state sign carved from maple wood with moose silhouette"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="product-img-placeholder" style="display:none">
+                <div>
+                  <div style="font-size:2rem;margin-bottom:8px">🍁</div>
+                  VT State Sign<br><small>Image coming soon</small>
+                </div>
+              </div>
+              <span class="product-badge">State Sign</span>
+            </div>
+            <div class="product-card-body">
+              <span class="product-state">Vermont</span>
+              <h3 class="product-name">Green Mountain Maple Sign</h3>
+              <p class="product-desc">Vermont maple wood etched with moose silhouette and mountain ridge. Each piece uniquely grained.</p>
+              <div class="product-footer">
+                <span class="product-price">$72</span>
+                <button class="add-to-cart-btn" data-product-id="vt-sign-001" aria-label="Add Green Mountain Maple Sign to cart">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                  </svg>
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 4 -->
+          <article class="product-card animate-in" data-category="trinkets" role="listitem">
+            <div class="product-card-img">
+              <img src="images/product-mushroom-set.webp"
+                   alt="Set of three hand-painted wooden mushroom figurines, glowing blue and white"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="product-img-placeholder" style="display:none">
+                <div>
+                  <div style="font-size:2rem;margin-bottom:8px">🍄</div>
+                  Mushroom Set<br><small>Image coming soon</small>
+                </div>
+              </div>
+              <span class="product-badge" style="background:var(--moss-deep);border-color:var(--moss)">New</span>
+            </div>
+            <div class="product-card-body">
+              <span class="product-state">Forest Trinkets</span>
+              <h3 class="product-name">Bioluminescent Mushroom Set</h3>
+              <p class="product-desc">Turned and hand-painted wooden mushrooms in blue glow colorway. Glow-in-the-dark pigment finish. Set of 3.</p>
+              <div class="product-footer">
+                <span class="product-price">$48</span>
+                <button class="add-to-cart-btn" data-product-id="mushroom-set-001" aria-label="Add Bioluminescent Mushroom Set to cart">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                  </svg>
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 5 -->
+          <article class="product-card animate-in" data-category="carvings" role="listitem">
+            <div class="product-card-img">
+              <img src="images/product-bark-relief.webp"
+                   alt="Bark-on birch slab with carved forest scene relief, trees and moon"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="product-img-placeholder" style="display:none">
+                <div>
+                  <div style="font-size:2rem;margin-bottom:8px">🌙</div>
+                  Bark Relief Panel<br><small>Image coming soon</small>
+                </div>
+              </div>
+            </div>
+            <div class="product-card-body">
+              <span class="product-state">Relief Carvings</span>
+              <h3 class="product-name">Midnight Forest Relief Panel</h3>
+              <p class="product-desc">Natural birch slab, bark-on edges. Carved moonlit forest scene with owl. Hand-applied oil finish. One of a kind.</p>
+              <div class="product-footer">
+                <span class="product-price">$210</span>
+                <button class="add-to-cart-btn" data-product-id="bark-relief-001" aria-label="Add Midnight Forest Relief Panel to cart">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                  </svg>
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 6 -->
+          <article class="product-card animate-in" data-category="spooky" role="listitem">
+            <div class="product-card-img">
+              <img src="images/product-hex-box.webp"
+                   alt="Small carved wooden hex box with geometric moon and eye symbols burned into lid"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="product-img-placeholder" style="display:none">
+                <div>
+                  <div style="font-size:2rem;margin-bottom:8px">🔮</div>
+                  Hex Keepsake Box<br><small>Image coming soon</small>
+                </div>
+              </div>
+              <span class="product-badge" style="background:rgba(122,45,30,0.5);border-color:var(--rust-bright)">Limited</span>
+            </div>
+            <div class="product-card-body">
+              <span class="product-state">Spooky Collection</span>
+              <h3 class="product-name">Wary Keepsake Hex Box</h3>
+              <p class="product-desc">Pyrography hex symbols burned into lid. Cherry wood box with magnetic closure. Lined with dark velvet. Perfect for secrets.</p>
+              <div class="product-footer">
+                <span class="product-price">$88</span>
+                <button class="add-to-cart-btn" data-product-id="hex-box-001" aria-label="Add Wary Keepsake Hex Box to cart">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                  </svg>
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /products-grid -->
+
+        <div style="text-align:center; margin-top:var(--sp-8);" class="animate-in">
+          <a href="shop.html" class="btn btn-secondary">View All Pieces →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         ABOUT STRIP
+    ═══════════════════════════════════════════ -->
+    <section class="about-strip" aria-label="About the artist">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-img-wrap animate-in">
+            <img src="images/about-workshop.webp"
+                 alt="Cassy MacDonald at her workbench, hands shaping a carved piece by warm lamplight"
+                 loading="lazy"
+                 onerror="this.style.display='none'">
+            <span class="about-img-caption" aria-hidden="true">✦ Cassy's Workshop, NH</span>
+          </div>
+          <div class="about-text animate-in">
+            <span class="section-eyebrow">The Artist</span>
+            <h2 class="section-title">Meet <span>Cassy MacDonald</span></h2>
+            <p>
+              Hidden away in the wooded hills of New Hampshire, Cassy MacDonald makes things from trees.
+              Not just things — <em>presences</em>. Objects that seem to remember what the forest felt like.
+            </p>
+            <p>
+              Her work spans pyrography, relief carving, lathe-turning, resin casting, and hand-painting —
+              sometimes all in the same piece. There's always a little wildness in it.
+            </p>
+            <div class="about-techniques" aria-label="Techniques">
+              <span class="technique-tag">Pyrography</span>
+              <span class="technique-tag">Relief Carving</span>
+              <span class="technique-tag">Lathe Turning</span>
+              <span class="technique-tag">Resin Casting</span>
+              <span class="technique-tag">Hand Painting</span>
+              <span class="technique-tag">Bark Art</span>
+              <span class="technique-tag">Custom Furniture</span>
+            </div>
+            <a href="about.html" class="btn btn-secondary" style="margin-top:var(--sp-4)">
+              Her Story →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CASSOWARY LORE
+    ═══════════════════════════════════════════ -->
+    <section class="lore-section" aria-label="The name's origin">
+      <div class="container">
+        <div class="lore-inner">
+          <div class="lore-bird-img animate-in">
+            <img src="images/cassowary-art.webp"
+                 alt="A cassowary bird rendered in woodcut print style, black with vivid cobalt blue neck wattle, surrounded by dark pine branches"
+                 loading="lazy"
+                 onerror="this.style.display='none'">
+          </div>
+          <div class="lore-text animate-in">
+            <span class="section-eyebrow">Why Wary?</span>
+            <h2 class="section-title">The Bird. <span>The Film. The Name.</span></h2>
+            <blockquote>
+              "The Cassowary doesn't explain itself.<br>
+              It simply exists — ancient, armored, and utterly itself."
+            </blockquote>
+            <p>
+              The name <em>Cassy is Wary</em> walks two paths at once. The Cassowary —
+              that magnificent, terrifying, sapphire-throated bird — is the shop's spirit animal.
+              Ancient and unafraid. A little dangerous.
+            </p>
+            <p>
+              The other half nods to <em>Beau is Afraid</em> — that surreal, dreamlike film about
+              dread and wonder existing in the same breath. That feeling lives in this work too.
+              You find something beautiful here, and it looks back at you.
+            </p>
+            <p>
+              Black and blue. Forest and feather. Cozy and uncanny.
+              That's the vibe. That's Cassy is Wary.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TESTIMONIALS
+    ═══════════════════════════════════════════ -->
+    <section class="testimonials-section" aria-label="Customer reviews">
+      <div class="container">
+        <div class="section-header animate-in" style="text-align:center">
+          <span class="section-eyebrow" style="display:block;text-align:center">✦ From the Woods to Your Home</span>
+          <h2 class="section-title">What People <span>Are Saying</span></h2>
+        </div>
+        <div class="testimonials-grid">
+
+          <blockquote class="testimonial-card animate-in">
+            <p class="testimonial-text">
+              "I bought the NH sign for my cabin and I honestly stare at it every morning. It feels alive.
+               Cassy's work has this energy that you don't expect from something made of wood."
+            </p>
+            <footer class="testimonial-author">
+              <div>
+                <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+                <div class="testimonial-name">Rebecca T.</div>
+                <div class="testimonial-loc">Concord, NH</div>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="testimonial-card animate-in">
+            <p class="testimonial-text">
+              "The Cassowary totem is the most unusual, wonderful thing I've ever owned.
+               My guests always ask about it first. It's a statement piece and a conversation piece."
+            </p>
+            <footer class="testimonial-author">
+              <div>
+                <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+                <div class="testimonial-name">Daniel M.</div>
+                <div class="testimonial-loc">Burlington, VT</div>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="testimonial-card animate-in">
+            <p class="testimonial-text">
+              "Ordered a custom Maine sign for my dad's birthday. She communicated every step and
+               the piece exceeded every expectation. That woman has a gift."
+            </p>
+            <footer class="testimonial-author">
+              <div>
+                <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+                <div class="testimonial-name">Joanna F.</div>
+                <div class="testimonial-loc">Portland, ME</div>
+              </div>
+            </footer>
+          </blockquote>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         NEWSLETTER
+    ═══════════════════════════════════════════ -->
+    <section class="newsletter-section" id="contact" aria-label="Join the mailing list">
+      <div class="container">
+        <div class="newsletter-inner animate-in">
+          <div class="newsletter-icon" aria-hidden="true">🌲</div>
+          <h2 class="newsletter-title">Enter the Forest</h2>
+          <p class="newsletter-desc">
+            New pieces, seasonal collections, and occasional dispatches from the deep woods.
+            No spam. Just wood.
+          </p>
+          <form class="newsletter-form" novalidate aria-label="Email signup">
+            <label for="email-input" class="visually-hidden">Your email address</label>
+            <input
+              id="email-input"
+              class="newsletter-input"
+              type="email"
+              placeholder="your@email.com"
+              required
+              autocomplete="email"
+            >
+            <button type="submit" class="btn btn-primary">Join the Forest</button>
+          </form>
+          <p style="font-family:var(--font-hand);font-size:0.9rem;color:var(--text-muted);margin-top:var(--sp-4)">
+            ✦ Unsubscribe anytime. No dark arts. Probably.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">Cassy is Wary</div>
+          <p class="footer-brand-desc">
+            Handmade woodcraft from the New England forest.
+            Every piece shaped by Cassy MacDonald in her New Hampshire studio.
+          </p>
+          <p style="margin-top:var(--sp-4);font-family:var(--font-hand);font-size:0.95rem;color:var(--blue-wattle)">
+            NoktoLLC · Est. 2025
+          </p>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Shop</h3>
+          <ul class="footer-links">
+            <li><a href="shop.html">All Pieces</a></li>
+            <li><a href="shop.html?cat=state-signs">State Signs</a></li>
+            <li><a href="shop.html?cat=spooky">Spooky Collection</a></li>
+            <li><a href="shop.html?cat=furniture">Furniture</a></li>
+            <li><a href="shop.html?cat=trinkets">Trinkets</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Info</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Cassy</a></li>
+            <li><a href="about.html#process">The Process</a></li>
+            <li><a href="shop.html#custom">Custom Orders</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Policies</h3>
+          <ul class="footer-links">
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">Care Instructions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Sale</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2025 Cassy is Wary · NoktoLLC · All rights reserved.</span>
+        <span class="footer-hand-note">Made in the woods of New Hampshire ✦</span>
+        <span>
+          <!-- CartSnip secure badge placeholder -->
+          <span style="opacity:0.5;font-size:0.75rem">🔒 Secure checkout via CartSnip</span>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       CARTSNIP FLOATING CART CONTAINER
+       Replace contents with CartSnip embed when ready
+  ═══════════════════════════════════════════ -->
+  <div id="cartsnip-floating-cart" aria-label="Shopping cart" role="complementary">
+    <!-- CartSnip will inject cart UI here -->
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
