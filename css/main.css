@@ -256,7 +256,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('../images/hero-bg.webp');
+  background-image: url('../images/hero-bg.jpeg');
   background-size: cover;
   background-position: center 30%;
   transform: scale(1.05);
